@@ -23,8 +23,7 @@
         // format the array to json so we can read it on client side
         $array = json_encode($array);
 
-        // return the json array
-        // each word is now seprated in  the array
+        // return the json array where each word are separated from each other
         return $array;
     }
 
