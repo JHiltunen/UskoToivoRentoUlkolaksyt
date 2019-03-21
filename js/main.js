@@ -15,10 +15,11 @@ function init(ulkolaksy) {
 
         // make the element draggable
         div.draggable = true;
-        // add event listener to the element to apply function to dragstart attribute
-        div.onload = function(event) {
-            this.addEventListener('dragstart', drag, false);
-        };
+
+        // Execute a JavaScript when the user starts to drag
+        div.ondragstart = function(event) {
+            drag(event);
+        }
 
         document.getElementById("boxPile").appendChild(div);
 
@@ -40,15 +41,15 @@ function initBoxSlots(ulkolaksy) {
     ulkolaksy.forEach(element => {
         var boxSlot = document.createElement("DIV");
         boxSlot.id = "slot" + index;
-        boxSlot.innerText = "slot";
 
-        // add event listeners to the element to apply function to on dragover and ondrop attributes
-        boxSlot.onload = function(event) {
-            this.addEventListener('onclick', function() {
-                console.log("CLicked");
-            });
-            this.addEventListener('ondragover', allowDrop(event), false);
-            this.addEventListener('ondrop', drop(event), false);
+        // Execute when an element is being dragged over a drop target
+        boxSlot.ondragover = function(event) {
+            allowDrop(event);
+        }
+
+        // Execute when a draggable element is dropped
+        boxSlot.ondrop = function(event) {
+            drop(event);
         }
 
         document.getElementById("boxPile").appendChild(boxSlot);
