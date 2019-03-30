@@ -73,8 +73,8 @@ function initAnswerChecking() {
         console.log("Vittu ku toimis..");
 
         // find all divs that contain words put the divs in to an array
-        var words = [].slice.call(document.querySelectorAll("[id^='word']"));
-
+        var words = [].slice.call(document.getElementById("wordSlots").querySelectorAll("[id^='word']"));
+        
         var jsonArray = JSON.stringify(words, ["innerText"]); // we need only innerText to be stringified
 
         console.log("JsonArray: " + jsonArray);
