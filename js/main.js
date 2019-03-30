@@ -30,37 +30,37 @@ function init(ulkolaksy) {
     console.log("All individual word elements are now created to the page");
     
     // call function to create div elements where user is able to drag words
-    initBoxSlots(ulkolaksy);
+    initWordSlots(ulkolaksy);
     // call function to create button so user can check for right answers
     initAnswerChecking();
 }
 
-function initBoxSlots(ulkolaksy) {
-    console.log("Starting to create elements for boxSlots")
+function initWordSlots(ulkolaksy) {
+    console.log("Starting to create elements for wordSlots")
     var index = 0;
     
     // loop through the individual words to make as many slots as there are words
     ulkolaksy.forEach(element => {
-        var boxSlot = document.createElement("DIV");
-        boxSlot.id = "slot" + index;
+        var wordSlot = document.createElement("DIV");
+        wordSlot.id = "slot" + index;
 
         // Execute when an element is being dragged over a drop target
-        boxSlot.ondragover = function(event) {
+        wordSlot.ondragover = function(event) {
             allowDrop(event);
         }
 
         // Execute when a draggable element is dropped
-        boxSlot.ondrop = function(event) {
+        wordSlot.ondrop = function(event) {
             drop(event);
         }
 
-        document.getElementById("boxPile").appendChild(boxSlot);
+        document.getElementById("wordSlots").appendChild(wordSlot);
 
         // increase the index by one
         index++;
     });
 
-    console.log("All boxSlots are now created on the page");
+    console.log("All wordSlots are now created on the page");
 }
 
 function initAnswerChecking() {

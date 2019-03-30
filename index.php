@@ -24,6 +24,7 @@
     </script>
 
     <div id="boxPile"></div>
+    <div id="wordSlots"></div>
 
     <p class="answer"></p>
 

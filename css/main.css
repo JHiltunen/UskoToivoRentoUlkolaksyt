@@ -1,3 +1,7 @@
+body {
+    background: #ffcc99;
+}
+
 [id^="word"] {
     float: left;
     /*width: 100px;
