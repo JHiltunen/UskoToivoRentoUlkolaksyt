@@ -31,6 +31,8 @@ function init(ulkolaksy) {
     
     // call function to create div elements where user is able to drag words
     initBoxSlots(ulkolaksy);
+    // call function to create button so user can check for right answers
+    initAnswerChecking();
 }
 
 function initBoxSlots(ulkolaksy) {
@@ -59,6 +61,39 @@ function initBoxSlots(ulkolaksy) {
     });
 
     console.log("All boxSlots are now created on the page");
+}
+
+function initAnswerChecking() {
+    // create button element
+    var checkAnswerButton = document.createElement("BUTTON");
+    checkAnswerButton.id = "check";
+    checkAnswerButton.innerText = "Tarkista";
+
+    checkAnswerButton.onclick = function() {
+        console.log("Vittu ku toimis..");
+
+        // find all divs that contain words put the divs in to an array
+        var words = [].slice.call(document.querySelectorAll("[id^='word']"));
+
+        var jsonArray = JSON.stringify(words, ["innerText"]); // we need only innerText to be stringified
+
+        console.log("JsonArray: " + jsonArray);
+
+        // create ajax request
+        // pass array of words to php file
+        $.ajax({
+            type: "POST",
+            data: {data : jsonArray},
+            dataType: "json",
+            url: "ulkolaksyt.php",
+            success: function(msg){
+                console.log("MSG: " + msg);
+                alert(msg);
+            }
+        });
+    }    
+
+    document.getElementById("boxPile").appendChild(checkAnswerButton);
 }
 
 function drag(event) {

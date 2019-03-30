@@ -23,8 +23,18 @@
         });
     </script>
 
-    <div id="boxPile"></div>
+    <div id="boxPile">
+<!--        <button id="check">Tarkista</button> -->
+    </div>
+
     <div id="boxSlots"></div>
+    <p class="answer"></p>
+
+        <script>
+            $("#check").click(function() {
+                console.log("Click");
+            });
+        </script>
 
 </body>
 </html>
