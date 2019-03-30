@@ -7,24 +7,7 @@
     }    
 
     function readUlkolaksyt() {
-        // open file, only in read mode
-        $file = fopen("properties/ulkolaksyt.txt", "r") or die("Unable to open file!");
-
-        // create empty array
-        $array = [];
-
-        // loop until file pointer reaches end of file
-        while (! feof($file)) {
-            // replace dots with spaces
-            $row = trim(str_replace(".", " ", fgets($file)));
-            // remove double spaces
-            $row = str_replace("  ", " ", $row);
-            // convert string to array using PHP function
-            $array = explode(" ", $row);
-        }
-
-        // close file
-        fclose($file);
+        $array = readUlkolaksyFromFile();
         
         // shuffle the array so words are not in correct order on UI
         shuffle($array);
@@ -38,7 +21,7 @@
 
     function checkCorrectAnswer($wordArray) {
         // read ulkolaksy words in correct order
-        $ulkolaksyArray = readCorrectUlkolaksyt();
+        $ulkolaksyArray = readUlkolaksyFromFile();
 
         $ulkolaksyArrayFromUi = [];
 
@@ -56,7 +39,7 @@
         }
     }
 
-    function readCorrectUlkolaksyt() {
+    function readUlkolaksyFromFile() {
         // open file, only in read mode
         $file = fopen("properties/ulkolaksyt.txt", "r") or die("Unable to open file!");
 
@@ -76,7 +59,6 @@
         // close file
         fclose($file);
 
-        // return the json array where each word are separated from each other
         return $array;
     }
 ?>
