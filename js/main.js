@@ -30,13 +30,13 @@ function init(ulkolaksy) {
     console.log("All individual word elements are now created to the page");
     
     // call function to create div elements where user is able to drag words
-    initWordSlots(ulkolaksy);
+    initBoxSlots(ulkolaksy);
     // call function to create button so user can check for right answers
     initAnswerChecking();
 }
 
-function initWordSlots(ulkolaksy) {
-    console.log("Starting to create elements for wordSlots")
+function initBoxSlots(ulkolaksy) {
+    console.log("Starting to create elements for boxSlots")
     var index = 0;
     
     // loop through the individual words to make as many slots as there are words
@@ -54,13 +54,13 @@ function initWordSlots(ulkolaksy) {
             drop(event);
         }
 
-        document.getElementById("wordSlots").appendChild(wordSlot);
+        document.getElementById("boxSlots").appendChild(wordSlot);
 
         // increase the index by one
         index++;
     });
 
-    console.log("All wordSlots are now created on the page");
+    console.log("All boxSlots are now created on the page");
 }
 
 function initAnswerChecking() {
@@ -73,8 +73,8 @@ function initAnswerChecking() {
         console.log("Vittu ku toimis..");
 
         // find all divs that contain words put the divs in to an array
-        var words = [].slice.call(document.getElementById("wordSlots").querySelectorAll("[id^='word']"));
-        
+        var words = [].slice.call(document.getElementById("boxSlots").querySelectorAll("[id^='word']"));
+
         var jsonArray = JSON.stringify(words, ["innerText"]); // we need only innerText to be stringified
 
         console.log("JsonArray: " + jsonArray);
@@ -93,7 +93,7 @@ function initAnswerChecking() {
         });
     }    
 
-    document.getElementById("boxPile").appendChild(checkAnswerButton);
+    document.body.appendChild(checkAnswerButton);
 }
 
 function drag(event) {
