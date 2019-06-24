@@ -33,7 +33,6 @@ function initAnswerChecking() {
     checkAnswerButton.innerText = "Tarkista";
 
     checkAnswerButton.onclick = function() {
-        console.log("Vittu ku toimis..");
 
         // find all divs that contain words put the divs in to an array
         var words = [].slice.call(document.querySelectorAll("[id^='word']"));
@@ -57,24 +56,4 @@ function initAnswerChecking() {
     }    
 
     document.body.appendChild(checkAnswerButton);
-}
-
-function drag(event) {
-    console.log("Drag started..")
-    // set data type and value of dragged data
-    // in this case type is "text" and the value is id of the draggable element (for example: "word0", "word1")
-    event.dataTransfer.setData("text", event.target.id);
-}
-
-function allowDrop(event) {
-    // by default, data/elements cannot be dropped in other elements.
-    // To allow a drop, we must prevent default handling of the element
-    event.preventDefault();
-}
-
-function drop(event) {
-    event.preventDefault(); // prevent the browser default handling of the data (default is open as link on drop)
-    var data = event.dataTransfer.getData("text"); // Get the dragged data with the dataTransfer.getData() method. In this case it's the id of individual word
-    console.log("Data: " + data); // The dragged data is the id of the dragged element ("word1")
-    event.target.appendChild(document.getElementById(data)); // Append the dragged element into the drop element
 }
